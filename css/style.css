@@ -46,11 +46,11 @@ header{
 .simon{
     position: absolute;
     text-align: left;
-    left: 650px;
-    top: 425px;
+    left: 645px;
+    top: 430px;
     color: black;
     z-index: 4;
-    font-size: xx-large;
+    font-size: 43px;
 }
 
 /*  reference for cone and trapezoid shapes
@@ -68,36 +68,36 @@ header{
     /* transform: rotate(45deg) */
 }
 
-.blue{
+.red{
     position: absolute;
     left: 600px;
     top: 250px;
     transform: rotate(45deg);
-    border-top: 200px solid blue;
-}
-
-.yellow{
-    position: absolute;
-    left: 400px;
-    top: 250px;
-    transform: rotate(-45deg);
-    border-top: 200px solid yellow;
-}
-
-.red{
-    position: absolute;
-    left: 400px;
-    top: 450px;
-    transform: rotate(-135deg);
     border-top: 200px solid red;
 }
 
 .green{
     position: absolute;
+    left: 400px;
+    top: 250px;
+    transform: rotate(-45deg);
+    border-top: 200px solid green;
+}
+
+.yellow{
+    position: absolute;
+    left: 400px;
+    top: 450px;
+    transform: rotate(-135deg);
+    border-top: 200px solid yellow;
+}
+
+.blue{
+    position: absolute;
     left: 600px;
     top: 450px;
     transform: rotate(135deg);
-    border-top: 200px solid  green;
+    border-top: 200px solid  blue;
 }
     #trapezoid {
         border-bottom: 150px solid red;
