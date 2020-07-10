@@ -1,24 +1,83 @@
 
 
-.circle {
-    height: 50px;
-    width: 50px;
-    background-color: #555;
+.circleBig {
+    position: absolute;
+    left: 400px;
+    top: 200px;
+    height: 600px;
+    width: 600px;
+    background-color: black;
     border-radius: 50%;
-} /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_shapes_circle */
+    z-index: -1;
+}
+    .circleSmall {
+        position: absolute;
+        left: 635px;
+        top: 435px;
+        height: 130px;
+        width: 130px;
+        background-color: silver;
+        border-radius: 50%;
+        z-index: 3;
+} 
+
+.circleMedium {
+    position: absolute;
+    left: 600px;
+    top: 400px;
+    height: 200px;
+    width: 200px;
+    background-color: black;
+    border-radius: 50%;
+    z-index: 2;
+} 
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_shapes_circle */
 
 /*  reference for cone and trapezoid shapes
     https://css-tricks.com/the-shapes-of-css/  */
 
-  #coneRed {
+  .cone {
     width: 0;
     height: 0;
     border-left: 200px solid transparent;
     border-right: 200px solid transparent;
     border-top: 200px solid red;
     border-radius: 50%;
+    z-index: 1;
     
-    transform: rotate(45deg)
+    /* transform: rotate(45deg) */
+}
+
+.blue{
+    position: absolute;
+    left: 600px;
+    top: 300px;
+    transform: rotate(45deg);
+    border-top: 200px solid blue;
+}
+
+.yellow{
+    position: absolute;
+    left: 400px;
+    top: 300px;
+    transform: rotate(-45deg);
+    border-top: 200px solid yellow;
+}
+
+.red{
+    position: absolute;
+    left: 400px;
+    top: 500px;
+    transform: rotate(-135deg);
+    border-top: 200px solid red;
+}
+
+.green{
+    position: absolute;
+    left: 600px;
+    top: 500px;
+    transform: rotate(135deg);
+    border-top: 200px solid  green;
 }
     #trapezoid {
         border-bottom: 150px solid red;
