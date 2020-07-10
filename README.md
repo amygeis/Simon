@@ -1,25 +1,36 @@
 # Simon
-Recreation of the game Simon
+Re-live your childhood by playing a recreation of the original Simon game!
 
 ## Description
-What your project is / should be used for
-What problem(s) your projects solves
+Recreation of the original game of Simon to test your memory skills.
+
+## Inspiration
+* Simon and game play on [Widipedia](https://en.wikipedia.org/wiki/Simon_(game)#Gameplay)
+* Game rules on [Ultra Board Games](https://www.ultraboardgames.com/simon/game-rules.php)
+
 ## Brief Example
 This could be a code snippet showing how your project should be used (if it is meant to be integrated into another app)
 This could be a screenshot of your project running in the browser (if it is a stand-alone application)
+
 ## List of Features / User Stories
-This typically will be a short list of the features / user stories that you planned during the development phase of the project
-To provide more detail, you can show how you categorized these features into Bronze (MVP), Silver, and Gold Levels and indicate which features you complete / have yet to complete
+#### Minimum game play
+* As a user I need a familiar layout so I know what game I am playing
+* As the game, I need to be able to generate random sequences, with sequence increasing by 1 each round to test the user.
+* As the game, I need to be able to change the appearance of the screen so the user know the sequence of patterns.
+* As the user, I need to know what level I am on.
+
+#### Advanced features
+* As a user, I would like the option to select 2 players so that I can play against another player.
+* As a user, I would like to be able to select skill level so that I can adjust to my skill level.
+* As a user, I would like to know how I scored compared to other players in the past.
+
 ## List of Technologies Used
-Often you will want to list the technologies you used to create the project.
-This typically would consist of all primary languages, frameworks, and libraries your app is composed of
-This is particularly important when it comes to recruiters scanning your projects for keywords
+* HTML-5
+* CSS
+* Javascript
+
 ## Installation Instructions / Getting Started
-This section should walk a reader, step by step, through the process of setting up your project
-For a tool meant to be integrated into other projects, this would likely outline the process of installing and accessing this tool in your project
-For an application, this would likely outline the process of forking, cloning, and starting the app locally
+Go the the web page and hit the start button!
+
 ## Contribution Guidelines
-This section should offer guidance on where and how users can contribute to your code, identify bugs, and propose improvements
-Good links to include are:
-A link to the project's main repository
-A link to the project's issue tracker
+If you would like to contribute to this project, please keep in the spirit of the original classic game.
