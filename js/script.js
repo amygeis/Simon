@@ -79,7 +79,8 @@ function startGame(e){
         compSequence.pattern.push(newColor)
         timer = setTimeout(player1.lose,5000)
         console.log(compSequence.pattern)
-        compSequence.playSequence()
+        //compSequence.playSequence()
+        playSequence(compSequence.pattern,1000)
         console.log("sequence played")
         //player1Timer.start()
         player1.turn=true;
@@ -129,7 +130,9 @@ class Sequence{
             console.log(color);
             //`${color}.flash()`
             setTimeout (`${color}.flash()`, 1000); 
+            setTimeout(console.log("wait"),1000)
             //wait
+
         }
     }
     evaluate = () =>{
@@ -154,13 +157,27 @@ class Sequence{
 function evaluate () {
     for(let i=0;i<compSequence.pattern.length;i++){
         console.log(`player1 ${player1.pattern[i]} comp ${compSequence.pattern[i]}`)
-        if (player1.pattern[i] == compSequence.pattern[i]){
-            return true;
-        } else {
-            console.log("color wrong");
+        if (player1.pattern[i] != compSequence.pattern[i]){
+            console.log("wrong color")
             return false;
-            break;
+            break
         }
+    }  return true
+}
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve,ms));
+}
+
+async function playSequence(sequence, time) {
+    for(let i=0;i<sequence.length;i++){
+        console.log(sequence.length);
+        let color = sequence[i];
+        console.log(color);
+        //`${color}.flash()`
+        await sleep(1000)
+        setTimeout (`${color}.flash()`, 1000); 
+        //wait
+
     }
 }
 
