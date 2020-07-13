@@ -25,6 +25,7 @@ class Button{
 
     }
     flash = () => {
+        console.log("flash")
         if (this.color == "red") {
             this.button.style.borderTop = "200px solid lightcoral";
         } else {
@@ -51,11 +52,15 @@ const blue = new Button("blue");
 
 function startGame(e){
     e.preventDefault();
-    while(compSequence.pattern = player1.pattern){
-        compSequence.pattern.push(nextSequence)
-        compSequence.playSequence
+    //while(compSequence.pattern = player1.pattern){
+        //console.log(compSequence.randomColor)
+        let newColor = compSequence.randomColor()
+        console.log(newColor)
+        compSequence.pattern.push(newColor)
+        console.log(compSequence.pattern)
+        compSequence.playSequence()
 
-    }
+    //}
 }
 
 class Sequence{
@@ -67,25 +72,33 @@ class Sequence{
     }
     randomColor = () => {
         let nextSequence = Math.floor(Math.random()*4)
-        switch(nextSequenc) {
+        console.log(nextSequence)
+        switch(nextSequence) {
             case 0:
                 nextSequence="red";
+                return nextSequence;
                 break;
             case 1:
                 nextSequence="yellow";
+                return nextSequence;
                 break;
             case 2:
                 nextSequence="green";
+                return nextSequence;
                 break;
             case 3:
                 nextSequence="blue";
+                return nextSequence;
                 break;
         }
     return nextSequence;
     }
     playSequence = () => {
         for(let i=0;i<this.pattern.length;i++){
-            this.pattern[i].flash
+            console.log(this.pattern.length);
+            let color = this.pattern[i];
+            console.log(color);
+            setTimeout ([color].flash(), 1000); 
             //wait
         }
     }
