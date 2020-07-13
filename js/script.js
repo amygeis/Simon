@@ -3,7 +3,7 @@
 const startButton = document.querySelector(`#start`)
 const startClick = startButton.addEventListener("click", startGame)
 
-class Player{
+class Player{  ///future
     constructor(){
         this.level = level;
 
@@ -12,6 +12,8 @@ class Player{
 
     }    
 }
+
+///   *******Button Class************
 
 class Button{
     constructor(color){
@@ -25,7 +27,21 @@ class Button{
         this.flash();
         console.log(this.color)
         player1.pattern.push(this.color)
-        console.log(player1.evaluate())
+        
+        if(evaluate()){
+            // console.log(`evaluate true =${evaluate}`)
+            timer = setTimeout(player1.lose,5000)
+        } else {
+            // console.log(`evaluate false=${evaluate}`)
+            player1.lose()
+        }
+        if(player1.pattern.length == compSequence.pattern.length){
+            console.log("length matches")
+            clearTimeout(timer)
+            console.log(player1.pattern)
+            player1.pattern=[];
+            player1.turn=false;
+        }
         return;
     }
     flash = () => {
@@ -46,17 +62,17 @@ class Button{
 
 }
 
-
+//******    Button declaration ********* */
 const red =new Button("red");
 const yellow = new Button("yellow");
 const green = new Button("green");
 const blue = new Button("blue");
 
-//need game sequence class
+//************  startgame function ********** */
 
 function startGame(e){
     e.preventDefault();
-    //while(compSequence.pattern = player1.pattern){
+    //for(let l=0;l<15;l++){
         //console.log(compSequence.randomColor)
         let newColor = compSequence.randomColor()
         console.log(newColor)
@@ -66,6 +82,10 @@ function startGame(e){
         compSequence.playSequence()
         console.log("sequence played")
         //player1Timer.start()
+        player1.turn=true;
+        //while(player1.turn){
+
+        //}
         
 
     //}
@@ -74,6 +94,7 @@ function startGame(e){
 class Sequence{
     constructor(){
         this.pattern=[];
+        this.turn = false;
     }
     newButton = () => {
 
@@ -106,24 +127,40 @@ class Sequence{
             console.log(this.pattern.length);
             let color = this.pattern[i];
             console.log(color);
-            setTimeout ([color].flash(), 1000); 
+            //`${color}.flash()`
+            setTimeout (`${color}.flash()`, 1000); 
             //wait
         }
     }
     evaluate = () =>{
         for(let i=0;i<this.pattern.length;i++){
-            if (this.pattern[i] = compSequence.pattern[i]){
-                return true;
+            console.log(`player1 ${player1.pattern[i]} comp ${compSequence.patter[i]}`)
+            if (player1.pattern[i] == compSequence.pattern[i]){
+                //return true;
             } else {
+                console.log("color wrong");
                 return false;
                 break;
             }
-        }
+        } return true;
             
         
     }
     lose =() => {
         console.log("player 1 loses")
+    }
+}
+
+function evaluate () {
+    for(let i=0;i<compSequence.pattern.length;i++){
+        console.log(`player1 ${player1.pattern[i]} comp ${compSequence.pattern[i]}`)
+        if (player1.pattern[i] == compSequence.pattern[i]){
+            return true;
+        } else {
+            console.log("color wrong");
+            return false;
+            break;
+        }
     }
 }
 
