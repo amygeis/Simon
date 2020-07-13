@@ -25,7 +25,6 @@ class Button{
 
     }
     flash = () => {
-        console.log(this.button);
         if (this.color == "red") {
             this.button.style.borderTop = "200px solid lightcoral";
         } else {
@@ -34,20 +33,14 @@ class Button{
             console.log(color);
             this.button.style.borderTop = "200px solid " + color;
         }
-        
-        const darkcolor = function () {
-            console.log(this.button)
-            this.button.style.borderTop = "200px solid " + this.color;
-        }
-        setTimeout (darkcolor, 500) 
+        setTimeout (this.darkcolor, 500) 
     }
-    playSequence = () => {
-        for(let i=0;i<this.pattern.length;i++){
-            this.pattern[i].flash
-            //wait
-        }
+    darkcolor =() => {
+        this.button.style.borderTop = "200px solid " + this.color;
     }
+
 }
+
 
 const red =new Button("red");
 const yellow = new Button("yellow");
@@ -72,21 +65,8 @@ class Sequence{
     newButton = () => {
 
     }
-}
-
-const compSequence = new Sequence()
-const player1 = new Sequence()
-
-//need to evaluate play
-
-
-
-//need timer
-
-
-//need random generator
-function randomColor(){
-    let nextSequence = Math.floor(Math.random()*4)
+    randomColor = () => {
+        let nextSequence = Math.floor(Math.random()*4)
         switch(nextSequenc) {
             case 0:
                 nextSequence="red";
@@ -102,6 +82,26 @@ function randomColor(){
                 break;
         }
     return nextSequence;
+    }
+    playSequence = () => {
+        for(let i=0;i<this.pattern.length;i++){
+            this.pattern[i].flash
+            //wait
+        }
+    }
 }
+
+const compSequence = new Sequence()
+const player1 = new Sequence()
+
+//need to evaluate play
+
+
+
+//need timer
+
+
+//need random generator
+
 
 
