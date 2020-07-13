@@ -99,6 +99,7 @@ header{
     transform: rotate(135deg);
     border-top: 200px solid  blue;
 }
+
     #trapezoid {
         border-bottom: 150px solid red;
         border-left: 150px solid transparent;
