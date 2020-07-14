@@ -1,8 +1,24 @@
 
 //need button class and 4 buttons
-const startButton = document.querySelector(`#start`)
-const startClick = startButton.addEventListener("click", startGame)
-const levelButton = document.querySelector(`#level`)
+const startButton = document.querySelector(`#start`);
+const startClick = startButton.addEventListener("click", startGame);
+const levelButton = document.querySelector(`#level`);
+const selectedLevelList = document.querySelector(`#difficulty`);
+const selectedLevel = selectedLevelList.options [selectedLevelList.selectedIndex].value;
+
+// **  sound generation credit - https://gist.github.com/micahbales/32f2afe2f33bcbafca786387bd359cbc  
+
+const sounds = {
+    green: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
+    red: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
+    blue: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
+    yellow: new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
+  };
+
+  function playSound(sound) {
+      sounds[sound].currentTime=0;
+      sounds[sound].play();
+  };
 
 class Player{  ///future
     constructor(){
@@ -25,8 +41,11 @@ class Button{
     }
     click = () => {
         //clearTimeout(timer)   //silver
+        // if(player1.turn=false){
+        //     return;
+        // }
         this.flash();
-        console.log(this.color)
+        //console.log(this.color)
         player1.pattern.push(this.color)
         
         if(evaluate()){
@@ -46,6 +65,7 @@ class Button{
     }
     flash = () => {
         //console.log("flash")
+        playSound(this.color)
         if (this.color == "red") {
             this.button.style.borderTop = "200px solid lightcoral";
         } else {
@@ -72,16 +92,16 @@ const blue = new Button("blue");
 
 async function startGame(e){
     e.preventDefault();
-    for(let l=0;l<15;l++){
+    selectedLevelList.disabled=true;
+    //compSequence=[];
+    for(let l=0;l<selectedLevel;l++){
         player1.level=l+1
         levelButton.innerText = player1.level;
-        let newColor = compSequence.randomColor()
-        console.log(newColor)
+        let newColor = compSequence.randomColor();
         compSequence.pattern.push(newColor)
-        console.log(compSequence.pattern)
+        //console.log(compSequence.pattern)
         //compSequence.playSequence()
         playSequence(compSequence.pattern,1000)
-        console.log("sequence played")
         //timer = setTimeout(player1.lose,5000) //silver
         player1.turn=true;
         while(player1.turn){
@@ -91,6 +111,8 @@ async function startGame(e){
         if(player1.winning = false) break;
 
     }
+    alert("You won!!!  You passed 15 levels!")
+    selectedLevelList.disabled=false;
 }
 
 class Sequence{
@@ -105,7 +127,6 @@ class Sequence{
     }
     randomColor = () => {
         let nextSequence = Math.floor(Math.random()*4)
-        console.log(nextSequence)
         switch(nextSequence) {
             case 0:
                 nextSequence="red";
@@ -128,57 +149,55 @@ class Sequence{
     }
     playSequence = () => {
         for(let i=0;i<this.pattern.length;i++){
-            console.log(this.pattern.length);
             let color = this.pattern[i];
-            console.log(color);
-            //`${color}.flash()`
             setTimeout (`${color}.flash()`, 1000); 
-            setTimeout(console.log("wait"),1000)
             //wait
 
         }
     }
     evaluate = () =>{
         for(let i=0;i<this.pattern.length;i++){
-            console.log(`player1 ${player1.pattern[i]} comp ${compSequence.patter[i]}`)
+            //console.log(`player1 ${player1.pattern[i]} comp ${compSequence.patter[i]}`)
             if (player1.pattern[i] == compSequence.pattern[i]){
                 //return true;
             } else {
-                console.log("color wrong");
                 return false;
                 break;
             }
-        } return true;
-            
+        } return true; 
         
+    }
+    win =() =>{
+
     }
     lose =() => {
         console.log("player 1 loses")
         alert("Sorry!!  You clicked the wrong color!")
         this.winning=false;
+        selectedLevelList.disabled=false;
     }
 }
 
 function evaluate () {
     for(let i=0;i<player1.pattern.length;i++){
-        console.log(`player1 ${player1.pattern[i]} comp ${compSequence.pattern[i]}`)
+        //console.log(`player1 ${player1.pattern[i]} comp ${compSequence.pattern[i]}`)
         if (player1.pattern[i] != compSequence.pattern[i]){
-            console.log("wrong color")
             return false;
             break
         }
     }  return true
 }
+
+//********           sleep function          */
+/* found sleep function on ttps://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep */
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve,ms));
 }
 
 async function playSequence(sequence, time) {
     for(let i=0;i<sequence.length;i++){
-        console.log(sequence.length);
         let color = sequence[i];
-        console.log(color);
-        //`${color}.flash()`
         await sleep(1000)
         setTimeout (`${color}.flash()`, 500); 
         //wait
@@ -189,7 +208,6 @@ async function playSequence(sequence, time) {
 const compSequence = new Sequence()
 const player1 = new Sequence()
 
-//need to evaluate play
 
 let timer;
 

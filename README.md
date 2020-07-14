@@ -7,6 +7,7 @@ Recreation of the original game of Simon to test your memory skills.
 ## Inspiration
 * Simon and game play on [Widipedia](https://en.wikipedia.org/wiki/Simon_(game)#Gameplay)
 * Game rules on [Ultra Board Games](https://www.ultraboardgames.com/simon/game-rules.php)
+* Game sound and play on [Waiting for Friday](https://www.waitingforfriday.com/?p=586#Sound_frequencies_and_timing)
 
 ## Brief Example
 This could be a code snippet showing how your project should be used (if it is meant to be integrated into another app)

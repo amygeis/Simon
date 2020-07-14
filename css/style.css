@@ -13,7 +13,7 @@ header{
 }
 .circleBig {
     position: absolute;
-    left: 400px;
+    left: 200px;
     top: 150px;
     height: 600px;
     width: 600px;
@@ -23,7 +23,7 @@ header{
 }  /* z index reference: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index */
     .circleSmall {
         position: absolute;
-        left: 635px;
+        left: 435px;
         top: 385px;
         height: 130px;
         width: 130px;
@@ -34,7 +34,7 @@ header{
 
 .circleMedium {
     position: absolute;
-    left: 600px;
+    left: 400px;
     top: 350px;
     height: 200px;
     width: 200px;
@@ -46,7 +46,7 @@ header{
 .simon{
     position: absolute;
     text-align: left;
-    left: 645px;
+    left: 445px;
     top: 430px;
     color: black;
     z-index: 4;
@@ -70,7 +70,7 @@ header{
 
 .red{
     position: absolute;
-    left: 600px;
+    left: 400px;
     top: 250px;
     transform: rotate(45deg);
     border-top: 200px solid red;
@@ -78,7 +78,7 @@ header{
 
 .green{
     position: absolute;
-    left: 400px;
+    left: 200px;
     top: 250px;
     transform: rotate(-45deg);
     border-top: 200px solid green;
@@ -86,7 +86,7 @@ header{
 
 .yellow{
     position: absolute;
-    left: 400px;
+    left: 200px;
     top: 450px;
     transform: rotate(-135deg);
     border-top: 200px solid yellow;
@@ -94,7 +94,7 @@ header{
 
 .blue{
     position: absolute;
-    left: 600px;
+    left: 400px;
     top: 450px;
     transform: rotate(135deg);
     border-top: 200px solid  blue;
