@@ -23,10 +23,8 @@ const sounds = {
 class Player{  ///future
     constructor(){
         this.level = level;
-
     }
     score = () =>{
-
     }    
 }
 
@@ -171,6 +169,11 @@ class Sequence{
         selectedLevelList.disabled=false;
         startButton.disabled=false;
         alert(`"You won!!!  You passed all ${selectedLevel} rounds!"`)
+        let wincolor = compSequence.pattern[compSequence.pattern.length-1]
+        for (let i=0;i<6;i++){
+            setTimeout(`${wincolor}.flash()`, i*750)
+        }
+        
     }
     lose =() => {
         console.log("player 1 loses")
