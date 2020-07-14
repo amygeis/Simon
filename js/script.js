@@ -2,6 +2,7 @@
 //need button class and 4 buttons
 const startButton = document.querySelector(`#start`)
 const startClick = startButton.addEventListener("click", startGame)
+const levelButton = document.querySelector(`#level`)
 
 class Player{  ///future
     constructor(){
@@ -69,32 +70,35 @@ const blue = new Button("blue");
 
 //************  startgame function ********** */
 
-function startGame(e){
+async function startGame(e){
     e.preventDefault();
-    //for(let l=0;l<15;l++){
-        //console.log(compSequence.randomColor)
+    for(let l=0;l<15;l++){
+        player1.level=l+1
+        levelButton.innerText = player1.level;
         let newColor = compSequence.randomColor()
         console.log(newColor)
         compSequence.pattern.push(newColor)
-        //timer = setTimeout(player1.lose,5000) //silver
         console.log(compSequence.pattern)
         //compSequence.playSequence()
         playSequence(compSequence.pattern,1000)
         console.log("sequence played")
-        //player1Timer.start()
+        //timer = setTimeout(player1.lose,5000) //silver
         player1.turn=true;
-        //while(player1.turn){
-
-        //}
+        while(player1.turn){
+            await sleep(1000)
         
+        }
+        if(player1.winning = false) break;
 
-    //}
+    }
 }
 
 class Sequence{
     constructor(){
         this.pattern=[];
         this.turn = false;
+        this.winning=true;
+        this.level=0;
     }
     newButton = () => {
 
@@ -150,6 +154,8 @@ class Sequence{
     }
     lose =() => {
         console.log("player 1 loses")
+        alert("Sorry!!  You clicked the wrong color!")
+        this.winning=false;
     }
 }
 
