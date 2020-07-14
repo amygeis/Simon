@@ -23,14 +23,13 @@ class Button{
         this.click = this.button.addEventListener("click",this.click)
     }
     click = () => {
-        clearTimeout(timer)
+        //clearTimeout(timer)   //silver
         this.flash();
         console.log(this.color)
         player1.pattern.push(this.color)
         
         if(evaluate()){
-            // console.log(`evaluate true =${evaluate}`)
-            timer = setTimeout(player1.lose,5000)
+           // timer = setTimeout(player1.lose,5000) //silver level - timeout on user input
         } else {
             // console.log(`evaluate false=${evaluate}`)
             player1.lose()
@@ -45,7 +44,7 @@ class Button{
         return;
     }
     flash = () => {
-        console.log("flash")
+        //console.log("flash")
         if (this.color == "red") {
             this.button.style.borderTop = "200px solid lightcoral";
         } else {
@@ -77,7 +76,7 @@ function startGame(e){
         let newColor = compSequence.randomColor()
         console.log(newColor)
         compSequence.pattern.push(newColor)
-        timer = setTimeout(player1.lose,5000)
+        //timer = setTimeout(player1.lose,5000) //silver
         console.log(compSequence.pattern)
         //compSequence.playSequence()
         playSequence(compSequence.pattern,1000)
@@ -155,7 +154,7 @@ class Sequence{
 }
 
 function evaluate () {
-    for(let i=0;i<compSequence.pattern.length;i++){
+    for(let i=0;i<player1.pattern.length;i++){
         console.log(`player1 ${player1.pattern[i]} comp ${compSequence.pattern[i]}`)
         if (player1.pattern[i] != compSequence.pattern[i]){
             console.log("wrong color")
@@ -175,7 +174,7 @@ async function playSequence(sequence, time) {
         console.log(color);
         //`${color}.flash()`
         await sleep(1000)
-        setTimeout (`${color}.flash()`, 1000); 
+        setTimeout (`${color}.flash()`, 500); 
         //wait
 
     }
