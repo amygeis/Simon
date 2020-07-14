@@ -92,27 +92,27 @@ const blue = new Button("blue");
 
 async function startGame(e){
     e.preventDefault();
+    startButton.disabled=true;
     selectedLevelList.disabled=true;
-    //compSequence=[];
+    compSequence.pattern=[];
     for(let l=0;l<selectedLevel;l++){
         player1.level=l+1
         levelButton.innerText = player1.level;
         let newColor = compSequence.randomColor();
         compSequence.pattern.push(newColor)
-        //console.log(compSequence.pattern)
-        //compSequence.playSequence()
         playSequence(compSequence.pattern,1000)
         //timer = setTimeout(player1.lose,5000) //silver
         player1.turn=true;
         while(player1.turn){
             await sleep(1000)
-        
-        }
-        if(player1.winning = false) break;
-
+            }
+    };
+    if(player1.winning = false){
+                    player1.lose()
+    }else {
+        player1.win();
     }
-    alert("You won!!!  You passed 15 levels!")
-    selectedLevelList.disabled=false;
+    
 }
 
 class Sequence{
@@ -168,12 +168,15 @@ class Sequence{
         
     }
     win =() =>{
-
+        selectedLevelList.disabled=false;
+        startButton.disabled=false;
+        alert(`"You won!!!  You passed all ${selectedLevel} rounds!"`)
     }
     lose =() => {
         console.log("player 1 loses")
         alert("Sorry!!  You clicked the wrong color!")
         this.winning=false;
+        startButton.disabled=false;
         selectedLevelList.disabled=false;
     }
 }
