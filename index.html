@@ -9,18 +9,26 @@
 </head>
 <body>
     <header>
-        <h1>Simon</h1>
-        <select name="level" id="difficulty">
-            <option value=3>Level 1, 8 rounds</option>
-            <option value=14>Level 2, 14 rounds</option>
-            <option value=20>Level 3, 20 rounds</option>
-            <option value=31>Level 4, 31 rounds</option>
-        </select>
-        <button>Round:</button>
-        <button id="level">0</button>
-        <button id="start">Start</button>
-        <button>Game Players: 1</button>
+        <div>Simon</div>
     </header>
+    <controls>
+        <div>
+            <select name="level" id="difficulty" font-family:junegull>
+                <option value=8>Level 1, 8 rounds</option>
+                <option value=14>Level 2, 14 rounds</option>
+                <option value=20>Level 3, 20 rounds</option>
+                <option value=31>Level 4, 31 rounds</option>
+            </select>
+        </div>
+        <div>
+            Round:
+            <divid id="level">0</divid>
+        </div>
+        <div id="start">Start</div>
+        </div>
+        <div>Game Players: 1
+        </div>
+    </controls>
     <main>
         <left>
         </left>

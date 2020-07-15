@@ -217,4 +217,3 @@ const player1 = new Sequence()
 
 let timer;
 
-
