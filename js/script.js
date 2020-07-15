@@ -38,23 +38,22 @@ class Button{
         this.click = this.button.addEventListener("click",this.click)
     }
     click = () => {
-        //clearTimeout(timer)   //silver
-        //timer = setTimeout(player1.lose,5000)
-        this.flash();
-        player1.pattern.push(this.color)
-        
-        if(evaluate()){
-            //clearTimeout(timer) 
-           //timer = setTimeout(player1.lose,5000) //silver level - timeout on user input
-        } else {
-            player1.lose()
-        }
-        if(player1.pattern.length == compSequence.pattern.length){
+        if (player1.turn){
             clearTimeout(timer)
-            player1.pattern=[];
-            player1.turn=false;
-        }
+            timer = setTimeout(player1.tooSlow,5000)
+            this.flash();
+            player1.pattern.push(this.color)
+            if(evaluate()){
+            } else {
+                player1.lose()
+            }
+            if(player1.pattern.length == compSequence.pattern.length){
+                clearTimeout(timer)
+                player1.pattern=[];
+                player1.turn=false;
+            }
         return;
+        }
     }
     flash = () => {
         playSound(this.color)
@@ -91,7 +90,7 @@ async function startGame(e){
         let newColor = compSequence.randomColor();
         compSequence.pattern.push(newColor)
         playSequence(compSequence.pattern,1000)
-        timer = setTimeout(player1.lose,5000+l*500) //silver
+        timer = setTimeout(player1.tooSlow,5000+l*1000) //silver
         player1.turn=true;
         while(player1.turn){
             await sleep(1000)
@@ -164,10 +163,13 @@ class Sequence{
         }
         
     }
+    tooSlow =() => {
+        alert("Sorry!!  You're too slow!")
+        this.lose();
+    }
     lose =() => {
         player1.pattern=[];
-        console.log("player 1 loses")
-        alert("Sorry!!  You clicked the wrong color!")
+        alert("Sorry!!  Better luck next time!");
         this.winning=false;
         startButton.disabled=false;
         selectedLevelList.disabled=false;
@@ -178,9 +180,9 @@ function evaluate () {
     for(let i=0;i<player1.pattern.length;i++){
         if (player1.pattern[i] != compSequence.pattern[i]){
             return false;
-            break
+            break;
         }
-    }  return true
+    }  return true;
 }
 
 //********           sleep function          */
