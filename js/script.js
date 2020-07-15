@@ -53,6 +53,9 @@ class Button{
                 clearTimeout(timer)
                 player1.pattern=[];
                 player1.turn=false;
+                if(compSequence.pattern.length==selectedLevel){
+                    player1.win()
+                }
             }
         return;
         }
@@ -106,7 +109,7 @@ async function startGame(e){
     if(player1.winning = true && player1.turn){
         console.log(`end of for ${player1.winning}`)
                     player1.win()
-    }else {
+    }else if (player1.winning=false){
         console.log(player1.winning)
         player1.lose();
     }
@@ -180,11 +183,16 @@ class Sequence{
         //alert("Sorry!!  You're too slow!")
         //player1.winning=false;
         status.innerText="Sorry!!  You're too slow!"
+        
         setTimeout(player1.lose,2000);
     }
     lose =() => {
         player1.pattern=[];
         player1.turn=false;
+        red.flash()
+        blue.flash()
+        green.flash()
+        yellow.flash()
         //alert("Sorry!!  Better luck next time!");
         status.innerText="Sorry!!  Better luck next time!"
         player1.winning=false;
