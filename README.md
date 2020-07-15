@@ -10,7 +10,7 @@ Recreation of the original game of Simon to test your memory skills.
 * Game sound and play on [Waiting for Friday](https://www.waitingforfriday.com/?p=586#Sound_frequencies_and_timing)
 
 ## Wire Frame
-![alt text] (images/Simon.png "Simon wire frame")
+![alt text](images/Simon.png "Simon wire frame")
 
 ## List of Features / User Stories
 #### Minimum game play
