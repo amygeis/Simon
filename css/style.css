@@ -7,7 +7,7 @@
 body{
     display: grid;
     height:  100vh;
-    grid-template-rows: 75px 25px 1fr;
+    grid-template-rows: 75px 25px 1fr 20px;
     grid-template-columns: 150px 1fr;
     font-family: junegull, Arial, Helvetica, sans-serif;
 }
@@ -23,6 +23,10 @@ header{
     text-align: center;
     font-size: 60px;
 }
+footer{
+    grid-row: 4;
+    grid-column: 1 / span 2;
+}
 controls{
     grid-row: 2;
     grid-column: 1 / span 2;
@@ -37,6 +41,8 @@ controls{
     border-radius: 8px;
     vertical-align: middle;
     padding: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .circleBig {
     position: absolute;
