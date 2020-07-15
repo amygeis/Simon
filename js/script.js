@@ -103,11 +103,12 @@ async function startGame(e){
             clearTimeout(timer)
             if(!player1.winning) break;
     };
-    if(player1.winning = false){
-                    player1.lose()
+    if(player1.winning = true && player1.turn){
+        console.log(`end of for ${player1.winning}`)
+                    player1.win()
     }else {
-        console.log(player1.winning, l, player1.turn)
-        player1.win();
+        console.log(player1.winning)
+        player1.lose();
     }
     
 }
@@ -160,6 +161,7 @@ class Sequence{
         
     }
     win =() =>{
+        console.log(player1.winning)
         selectedLevelList.disabled=false;
         player1.pattern=[];
         startButton.disabled=false;
@@ -167,6 +169,7 @@ class Sequence{
         //alert(`"You won!!!  You passed all ${selectedLevel} rounds!"`)
         status.innerText="WINNER!!!"
         status.style.animationDuration ="7.5s";
+        status.style.animationPlayState ="running";
         let wincolor = compSequence.pattern[compSequence.pattern.length-1]
         for (let i=0;i<6;i++){
             setTimeout(`${wincolor}.flash()`, i*650)
@@ -175,7 +178,7 @@ class Sequence{
     }
     tooSlow =() => {
         //alert("Sorry!!  You're too slow!")
-        player1.winning=false;
+        //player1.winning=false;
         status.innerText="Sorry!!  You're too slow!"
         setTimeout(player1.lose,2000);
     }
@@ -184,7 +187,7 @@ class Sequence{
         player1.turn=false;
         //alert("Sorry!!  Better luck next time!");
         status.innerText="Sorry!!  Better luck next time!"
-        this.winning=false;
+        player1.winning=false;
         startButton.disabled=false;
         selectedLevelList.disabled=false;
     }
