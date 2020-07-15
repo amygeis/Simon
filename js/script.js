@@ -5,6 +5,7 @@ const startClick = startButton.addEventListener("click", startGame);
 const levelButton = document.querySelector(`#level`);
 const selectedLevelList = document.querySelector(`#difficulty`);
 const selectedLevel = selectedLevelList.options [selectedLevelList.selectedIndex].value;
+const status = document.querySelector('#status')
 
 // **  sound generation credit - https://gist.github.com/micahbales/32f2afe2f33bcbafca786387bd359cbc  
 
@@ -45,6 +46,7 @@ class Button{
             player1.pattern.push(this.color)
             if(evaluate()){
             } else {
+                player1.winning=false;
                 player1.lose()
             }
             if(player1.pattern.length == compSequence.pattern.length){
@@ -81,6 +83,9 @@ const blue = new Button("blue");
 
 async function startGame(e){
     e.preventDefault();
+    status.innerText="";
+    status.style.animationDuration ="0s";
+    player1.winning = true;
     startButton.disabled=true;
     selectedLevelList.disabled=true;
     compSequence.pattern=[];
@@ -96,10 +101,12 @@ async function startGame(e){
             await sleep(1000)
             }
             clearTimeout(timer)
+            if(!player1.winning) break;
     };
     if(player1.winning = false){
                     player1.lose()
     }else {
+        console.log(player1.winning, l, player1.turn)
         player1.win();
     }
     
@@ -156,7 +163,10 @@ class Sequence{
         selectedLevelList.disabled=false;
         player1.pattern=[];
         startButton.disabled=false;
-        alert(`"You won!!!  You passed all ${selectedLevel} rounds!"`)
+        player1.turn=false;
+        //alert(`"You won!!!  You passed all ${selectedLevel} rounds!"`)
+        status.innerText="WINNER!!!"
+        status.style.animationDuration ="7.5s";
         let wincolor = compSequence.pattern[compSequence.pattern.length-1]
         for (let i=0;i<6;i++){
             setTimeout(`${wincolor}.flash()`, i*650)
@@ -164,12 +174,16 @@ class Sequence{
         
     }
     tooSlow =() => {
-        alert("Sorry!!  You're too slow!")
-        this.lose();
+        //alert("Sorry!!  You're too slow!")
+        player1.winning=false;
+        status.innerText="Sorry!!  You're too slow!"
+        setTimeout(player1.lose,2000);
     }
     lose =() => {
         player1.pattern=[];
-        alert("Sorry!!  Better luck next time!");
+        player1.turn=false;
+        //alert("Sorry!!  Better luck next time!");
+        status.innerText="Sorry!!  Better luck next time!"
         this.winning=false;
         startButton.disabled=false;
         selectedLevelList.disabled=false;
@@ -197,9 +211,6 @@ async function playSequence(sequence, time) {
         let color = sequence[i];
         await sleep(500)
         setTimeout (`${color}.flash()`, 500); 
-    }
-    if(player1.turn){
-        //timer = setTimeout(player1.lose,5000)
     }
 }
 
